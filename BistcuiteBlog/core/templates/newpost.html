@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% block content %}
+
+</br>
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+            
+                <form method="post">
+                    {{ form.non_field_errors }}
+                    {% csrf_token %}
+                     <div class="form-group">
+                        <label for="title">Post's title:</label>
+                        <input style="text-align: left;" id="title" type="text" name="title" maxlength="150" class="form-control" autofocus required>
+
+                        <label for="slug">Slug:</label>
+                        <input style="text-align: left;" id="slug" type="text" name="slug" maxlength="150" class="form-control" autofocus required>
+                        {{ form.title.errors }}
+                        {{ form.slug.errors }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="content">Post's content:</label>
+                        <textarea class="form-control" id="content" name="content" rows="3" required></textarea>
+                        {{ form.content.errors }}
+                    </div>
+                    <button type="submit" class="btn btn-block btn-success">Login</button>
+                </form>
+            <br>
+
+    </div>
+</div>
+
+{% endblock content %}

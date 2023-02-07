@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark">
+
+    <head>
+        <title>Bistcuite</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous" />
+
+        <style>
+            body {
+                font-family: "Roboto", sans-serif;
+                font-size: 17px;
+                background-color: #fdfdfd;
+            }
+
+            .shadow {
+                box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+            }
+
+            .masthead {
+                background: #e18133;
+                height: auto;
+                padding-bottom: 15px;
+                box-shadow: 0 16px 48px #E3E7EB;
+                padding-top: 10px;
+            }
+
+            .card{
+                box-shadow: 0 16px 48px #E3E7EB;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow" id="mainNav">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="https://github.com/bistcuite.png" width="40" alt="..." class="rounded-circle">
+                </a>
+                <a class="navbar-brand" href="/">
+                    Bistcuite
+                </a>
+
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item text-black">
+                            <a class="btn btn-primary" href="{% url 'newpost' %}">New Post</a>
+                            <a class="btn btn-danger" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item text-black">
+                            <a class="btn btn-primary" href="{% url 'login' %}">Sign in</a>
+                        </li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        {% block content %}
+        <!-- Content Goes here -->
+        {% endblock content %}
+
+
+        <!-- Footer -->
+        <footer class="py-3 bg-grey">
+            <p class="m-0 text-dark text-center ">Copyright &copy; 2021-2023 <a href="https://github.com/bistcuite"><b>Bistcuite</b></a></p>
+        </footer>
+    </body>
+</html>
