@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% block content %}
+{% load markdown_extras %}
+
+
+<div class="container">
+    <br>
+    {% if post.status == 0 %}
+        <div class="alert alert-primary" role="alert">
+        This post is a draft and not published yet.
+        </div>
+    {% endif %}
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 left  top">
+      
+      <div class="card-body">
+        <h1>{% block title %} {{ object.title }} {% endblock title %}</h1>
+        <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
+        <p class="card-text ">{{ object.content | markdown | safe }}</p>
+      </div>
+    </div>
+    {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+  </div>
+</div>
+
+{% endblock content %}
